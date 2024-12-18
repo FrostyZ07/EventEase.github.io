@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f6f8f9 0%, #e5ebee 100%);
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 500px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+}
+
+header h1 {
+  font-size: 40px;
+  color: #4fb3bf; 
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 16px;
+  font-style: italic;
+  color: #6c757d;
+  margin-bottom: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  display: block;
+  text-align: left;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #495057;
+  transition: color 0.3s ease;
+}
+
+form input:focus + label, 
+form textarea:focus + label {
+  color: #4fb3bf;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus, 
+form textarea:focus {
+  outline: none;
+  border-color: #4fb3bf;
+  box-shadow: 0 0 0 3px rgba(79, 179, 191, 0.1);
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 25px;
+  background-color: #4fb3bf;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #3c8f9b;
+  transform: scale(1.02);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .container {
+      width: 95%;
+      padding: 20px;
+  }
+
+  header h1 {
+      font-size: 32px;
+  }
+}
