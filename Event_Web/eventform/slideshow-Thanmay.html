@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventEZ Gallery</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #eae6df;
+      filter: blur(50%);
+      filter: blur(100%);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150vh;
+      flex-direction: column;
+    }
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Merienda", Merienda}
+
+    h1 {
+      font-size: 4rem;
+      font-family: Merienda;
+      color: #000000;
+      text-align: center;
+      letter-spacing: 4px;
+      margin-bottom: 40px;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Wrapper to hold the grid */
+    .carousel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      width: 100%;
+      padding: 20px;
+    }
+
+    /* Carousel Container */
+    .carousel-container {
+      color: #555;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .carousel {
+      position: relative;
+      width: 350px;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(53, 50, 50, 0.2);
+      border: #333;
+    }
+
+    /* Slider */
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-images img {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    /* Navigation Arrows */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 10   px;
+      color: white;
+      background-color: rgba(147, 142, 142, 0.5);
+      padding: 8px;
+      border-radius: 100%;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+
+    /* Dots Indicator */
+    .dots {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .dot.active {
+      background-color: #333;
+    }
+
+    /* Description */
+    .description {
+      margin-top: 10px;
+      font-size: 14px;
+      text-align: center;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="#home" class="w3-bar-item w3-button w3-wide">LOGO</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+        <a href="./eventform/index-Thanmay.html" class="w3-bar-item w3-button"><i class="fa fa-user"></i> EVENT</a>
+        <a href="./eventform/slideshow-Thanmay.html" class="w3-bar-item w3-button"><i class="fa fa-th"></i> GALLERY</a>
+        <a href="#pricing" class="w3-bar-item w3-button"> SERVICES</a>
+        <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
+        <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> CONTACT</a>
+        <a href="#sponsors" class="w3-bar-item w3-button"><i class="fa fa-handshake-o"></i> SPONSORS</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">EVENT</a>
+  <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
+  <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">SERVICES</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+  <a href="#sponsors" onclick="w3_close()" class="w3-bar-item w3-button">SPONSORS</a>
+</nav>
+
+
+
+  <h1>Gallery</h1>
+  
+  <div class="carousel-grid">
+    <!-- Six carousels with descriptions -->
+    <div class="carousel-container">
+      <div class="carousel" id="carousel1">
+        <div class="carousel-images">
+          <img src="../assets/uc23a.png" alt="Image 1">
+          <img src="../assets/event2.jpg" alt="Image 2">
+          <img src="../assets/event3.jpg" alt="Image 3">
+        </div>
+        <div class="arrow left" onclick="prevImage('carousel1')">&#10094;</div>
+        <div class="arrow right" onclick="nextImage('carousel1')">&#10095;</div>
+        <div class="dots">
+          <span class="dot" onclick="currentImage('carousel1', 0)"></span>
+          <span class="dot" onclick="currentImage('carousel1', 1)"></span>
+          <span class="dot" onclick="currentImage('carousel1', 2)"></span>
+        </div>
+      </div>
+      <div class="description">Description for Carousel 1</div>
+    </div>
+
+    <!-- Carousel 2 -->
+    <div class="carousel-container">
+      <div class="carousel" id="carousel2">
+        <div class="carousel-images">
+          <img src="../assets/uc23a.png" alt="Image 1">
+          <img src="../assets/event2.jpg" alt="Image 2">
+          <img src="../assets/event3.jpg" alt="Image 3">
+        </div>
+        <div class="arrow left" onclick="prevImage('carousel2')">&#10094;</div>
+        <div class="arrow right" onclick="nextImage('carousel2')">&#10095;</div>
+        <div class="dots">
+          <span class="dot" onclick="currentImage('carousel2', 0)"></span>
+          <span class="dot" onclick="currentImage('carousel2', 1)"></span>
+          <span class="dot" onclick="currentImage('carousel2', 2)"></span>
+        </div>
+      </div>
+      <div class="description">Description for Carousel 2</div>
+    </div>
+
+    <!-- Carousel 3 -->
+    <div class="carousel-container">
+      <div class="carousel" id="carousel3">
+        <div class="carousel-images">
+          <img src="../assets/uc23a.png" alt="Image 1">
+          <img src="../assets/event2.jpg" alt="Image 2">
+          <img src="../assets/event3.jpg" alt="Image 3">
+        </div>
+        <div class="arrow left" onclick="prevImage('carousel3')">&#10094;</div>
+        <div class="arrow right" onclick="nextImage('carousel3')">&#10095;</div>
+        <div class="dots">
+          <span class="dot" onclick="currentImage('carousel3', 0)"></span>
+          <span class="dot" onclick="currentImage('carousel3', 1)"></span>
+          <span class="dot" onclick="currentImage('carousel3', 2)"></span>
+        </div>
+      </div>
+      <div class="description">Description for Carousel 3</div>
+    </div>
+
+    <!-- Carousel 4 -->
+    <div class="carousel-container">
+      <div class="carousel" id="carousel4">
+        <div class="carousel-images">
+          <img src="../assets/uc23a.png" alt="Image 1">
+          <img src="../assets/event2.jpg" alt="Image 2">
+          <img src="../assets/event3.jpg" alt="Image 3">
+        </div>
+        <div class="arrow left" onclick="prevImage('carousel4')">&#10094;</div>
+        <div class="arrow right" onclick="nextImage('carousel4')">&#10095;</div>
+        <div class="dots">
+          <span class="dot" onclick="currentImage('carousel4', 0)"></span>
+          <span class="dot" onclick="currentImage('carousel4', 1)"></span>
+          <span class="dot" onclick="currentImage('carousel4', 2)"></span>
+        </div>
+      </div>
+      <div class="description">Description for Carousel 4</div>
+    </div>
+
+    <!-- Carousel 5 -->
+    <div class="carousel-container">
+      <div class="carousel" id="carousel5">
+        <div class="carousel-images">
+          <img src="../assets/uc23a.png" alt="Image 1">
+          <img src="../assets/event2.jpg" alt="Image 2">
+          <img src="../assets/event3.jpg" alt="Image 3">
+        </div>
+        <div class="arrow left" onclick="prevImage('carousel5')">&#10094;</div>
+        <div class="arrow right" onclick="nextImage('carousel5')">&#10095;</div>
+        <div class="dots">
+          <span class="dot" onclick="currentImage('carousel5', 0)"></span>
+          <span class="dot" onclick="currentImage('carousel5', 1)"></span>
+          <span class="dot" onclick="currentImage('carousel5', 2)"></span>
+        </div>
+      </div>
+      <div class="description">Description for Carousel 5</div>
+    </div>
+
+    <!-- Carousel 6 -->
+    <div class="carousel-container">
+      <div class="carousel" id="carousel6">
+        <div class="carousel-images">
+          <img src="../assets/uc23a.png" alt="Image 1">
+          <img src="../assets/event2.jpg" alt="Image 2">
+          <img src="../assets/event3.jpg" alt="Image 3">
+        </div>
+        <div class="arrow left" onclick="prevImage('carousel6')">&#10094;</div>
+        <div class="arrow right" onclick="nextImage('carousel6')">&#10095;</div>
+        <div class="dots">
+          <span class="dot" onclick="currentImage('carousel6', 0)"></span>
+          <span class="dot" onclick="currentImage('carousel6', 1)"></span>
+          <span class="dot" onclick="currentImage('carousel6', 2)"></span>
+        </div>
+      </div>
+      <div class="description">Description for Carousel 6</div>
+    </div>
+  </div>
+
+  <script>
+    const carousels = {
+      carousel1: 0,
+      carousel2: 0,
+      carousel3: 0,
+      carousel4: 0,
+      carousel5: 0,
+      carousel6: 0,
+    };
+
+    function showImage(carouselId, index) {
+      const carousel = document.getElementById(carouselId);
+      const images = carousel.querySelector('.carousel-images');
+      const dots = carousel.querySelectorAll('.dot');
+      const imageCount = dots.length;
+      carousels[carouselId] = (index + imageCount) % imageCount;
+      images.style.transform = `translateX(-${carousels[carouselId] * 300}px)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[carousels[carouselId]].classList.add('active');
+    }
+
+    function nextImage(carouselId) {
+      showImage(carouselId, carousels[carouselId] + 1);
+    }
+
+    function prevImage(carouselId) {
+      showImage(carouselId, carousels[carouselId] - 1);
+    }
+
+    function currentImage(carouselId, index) {
+      showImage(carouselId, index);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      for (let i = 1; i <= 6; i++) {
+        showImage(`carousel${i}`, 0);
+      }
+    });
+  </script>
+
+</body>
+</html>
